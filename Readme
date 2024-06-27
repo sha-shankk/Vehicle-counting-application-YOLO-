@@ -1,1 +1,105 @@
+Vehicle Counting Application using YOLOv5
 
+This repository contains a vehicle counting application built using YOLOv5. The application is capable of detecting vehicles, calculating their speed and direction, and providing vehicle counts based on their classes (bike, car, truck, buses).
+Table of Contents
+
+    Introduction
+    Features
+    Installation
+    Usage
+    Configuration
+    Results
+    Contributing
+    License
+
+Introduction
+
+This project uses the YOLOv5 object detection model to identify and count different classes of vehicles in a video feed. Additionally, it calculates the speed and direction of the detected vehicles. The application is designed to work with the following vehicle classes:
+
+    Bike
+    Car
+    Truck
+    Buses
+
+Features
+
+    Vehicle Detection: Uses YOLOv5 for detecting vehicles.
+    Speed Calculation: Calculates the speed of each detected vehicle.
+    Direction Determination: Determines the direction of movement of each vehicle.
+    Vehicle Counting: Counts the number of vehicles in each class (bike, car, truck, buses).
+
+Installation
+Prerequisites
+
+    Python 3.8 or higher
+    pip package installer
+
+Steps
+
+    Clone the repository:
+
+bash
+
+git clone https://github.com/yourusername/vehicle-counting-yolov5.git
+cd vehicle-counting-yolov5
+
+    Create and activate a virtual environment (optional but recommended):
+
+python -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+
+    Install the required packages:
+
+
+pip install -r requirements.txt
+
+    Download the YOLOv5 model weights:
+
+
+python models/download_weights.py
+
+Usage
+
+To run the vehicle counting application, use the following command:
+
+
+python main.py --input path_to_video_file --output path_to_output_directory
+
+Arguments
+
+    --input: Path to the input video file.
+    --output: Path to the directory where the output video and data will be saved.
+
+Configuration
+
+The application can be configured through the config.yaml file. This file includes parameters for YOLOv5 model configuration, speed calculation settings, and other options.
+Example config.yaml
+
+yaml
+
+model:
+  weights: yolov5s.pt
+  img_size: 640
+  conf_thres: 0.4
+  iou_thres: 0.5
+
+speed_calculation:
+  fps: 30
+  distance_per_pixel: 0.05
+
+classes:
+  - bike
+  - car
+  - truck
+  - bus
+
+Results
+
+The results of the vehicle counting application will be saved in the specified output directory. This includes:
+
+    Processed video with annotations showing detected vehicles, their speed, and direction.
+    A CSV file with the vehicle counts per class.
+
+Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Make sure to follow the coding style and include appropriate tests.
